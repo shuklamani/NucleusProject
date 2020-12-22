@@ -30,6 +30,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("maker2").password(passwordEncoder.encode("123")).roles("MAKER")
                 .and()
                 .withUser("checker1").password(passwordEncoder.encode("123")).roles("CHECKER");
+
+        /*
+        JDBC Authentication Code
+        auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(new BCryptPasswordEncoder())
+                .usersByUsernameQuery("select username, password, enabled"
+                        + " from users where username=?")
+                .authoritiesByUsernameQuery("select username, authority "
+                        + "from authorities where username=?");
+
+         */
     }
 
     @Override
